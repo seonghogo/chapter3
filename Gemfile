@@ -18,6 +18,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop', '0.55.0'
 gem 'will_paginate', '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave', '1.2.1'
+gem 'mini_magick', '4.8.0'
 
 
 
@@ -42,5 +44,9 @@ group :test do
   gem 'guard',                    '2.14.2'
   gem 'guard-minitest',           '2.4.6'
 end
+group :production do
+  gem 'fog', '1.42'
+  end
+
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
