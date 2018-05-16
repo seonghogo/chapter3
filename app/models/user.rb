@@ -78,6 +78,16 @@ validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     reset_sent_at < 2.hours.ago
   end
     # 試作feedの定義
+
+     # ユーザーのステータスフィードを返す
+  def feed
+           following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
+
   # 完全な実装は次章の「ユーザーをフォローする」を参照
   def feed
     Micropost.where("user_id = ?", id)
